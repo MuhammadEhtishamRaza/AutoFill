@@ -1,0 +1,33 @@
+{
+  "manifest_version": 3,
+  "name": "AutoFill EightFold AI",
+  "version": "1.0.0",
+  "description": "AutoFilling data in PCT EightFold AI application.",
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png"
+  },
+  "action": {
+    "default_icon": {
+      "48": "icon48.png"
+    },
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://ptc.eightfold.ai/*", "https://*.eightfold.ai/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "permissions": ["storage", "activeTab", "tabs", "scripting"],
+  "web_accessible_resources": [
+    {
+      "resources": ["test-data.json"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}
